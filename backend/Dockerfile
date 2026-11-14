@@ -2,9 +2,9 @@ FROM python:3.12-slim
 WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 
-# Prisma 查询引擎依赖 openssl，slim 镜像需要显式安装。
+# Prisma 查询引擎依赖 openssl；prisma CLI 内置的 Node 运行时依赖 libatomic。
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends openssl \
+    && apt-get install -y --no-install-recommends openssl libatomic1 \
     && rm -rf /var/lib/apt/lists/*
 
 COPY pyproject.toml README.md ./
