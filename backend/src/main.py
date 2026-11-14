@@ -45,7 +45,7 @@ class TaskResponse(BaseModel):
 
 @app.get("/health")
 async def health_check():
-    return {"status": "ok"}
+    return {"status": "ok2"}
 
 
 @app.get("/api/tasks", response_model=list[TaskResponse])
